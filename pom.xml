@@ -11,6 +11,8 @@
     <modules>
         <module>px_app_service</module>
         <module>px_balance_service</module>
+        <module>px_game_service</module>
+        <module>px_manage_service</module>
     </modules>
 
     <properties>
