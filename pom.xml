@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>px_app_service</module>
+        <module>px_balance_service</module>
     </modules>
 
     <properties>
