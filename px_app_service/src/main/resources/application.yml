@@ -1,0 +1,11 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: px-app-service  # 服务名，非常重要
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848  # Nacos地址
+        username: nacos
+        password: nacos123456
