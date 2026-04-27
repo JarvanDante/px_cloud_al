@@ -1,0 +1,23 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: px-gateway  # 服务名，非常重要
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848  # Nacos地址
+        username: nacos
+        password: nacos123456
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: px-app-service
+              uri: lb://px-app-service
+              predicates:
+                - Path=/user/**
+            - id: px-balance-service
+              uri: lb://px-balance-service
+              predicates:
+                - Path=/order/**

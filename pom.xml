@@ -13,6 +13,7 @@
         <module>px_balance_service</module>
         <module>px_game_service</module>
         <module>px_manage_service</module>
+        <module>px_gateway</module>
     </modules>
 
     <properties>
