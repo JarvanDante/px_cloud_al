@@ -7,6 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ManageApplication {
     public static void main(String[] args) {
         System.out.println("服务：px-manage-service");
-        SpringApplication.run(ManageApplication.class);
+        SpringApplication.run(ManageApplication.class, args);
     }
 }

@@ -13,6 +13,10 @@ spring:
       server:
         webflux:
           routes:
+            - id: px-bff-service
+              uri: lb://px-bff-service
+              predicates:
+                - Path=/api/frontend/**
             - id: px-app-service
               uri: lb://px-app-service
               predicates:

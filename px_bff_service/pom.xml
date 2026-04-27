@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>px_gateway</artifactId>
+    <artifactId>px_bff_service</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -17,17 +17,18 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+
     <dependencies>
         <!--        nacos-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-        <!--        &lt;!&ndash;        spring-boot&ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.boot</groupId>-->
-        <!--            <artifactId>spring-boot-starter-web</artifactId>-->
-        <!--        </dependency>-->
+        <!--        spring-boot-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <!--        openfeign-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -44,15 +45,40 @@
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!--       gateway-->
+
+        <!-- Dubbo Spring Boot Starter -->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway-server-webflux</artifactId>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>3.2.15</version>
         </dependency>
-        <!-- WebFlux 支持（spring-cloud-starter-gateway 已经包含，但显式声明也可） -->
+
+        <!-- Nacos 注册中心 -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-registry-nacos</artifactId>
+            <version>3.2.15</version>
         </dependency>
+
+        <!-- 负载均衡 / 序列化等默认已包含 -->
+
+        <!-- 你自己的 API 模块（重点） -->
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>px_app_api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!--        <dependency>-->
+        <!--            <groupId>com.px</groupId>-->
+        <!--            <artifactId>px-balance-api</artifactId>-->
+        <!--            <version>1.0-SNAPSHOT</version>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>com.px</groupId>-->
+        <!--            <artifactId>px-game-api</artifactId>-->
+        <!--            <version>1.0-SNAPSHOT</version>-->
+        <!--        </dependency>-->
     </dependencies>
 </project>

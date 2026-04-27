@@ -8,6 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class GameApplication {
     public static void main(String[] args) {
         System.out.println("服务：px-game-service");
-        SpringApplication.run(GameApplication.class);
+        SpringApplication.run(GameApplication.class, args);
     }
 }
