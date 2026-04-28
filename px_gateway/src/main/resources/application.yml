@@ -1,14 +1,23 @@
 server:
   port: 8080
+
 spring:
   application:
-    name: px-gateway  # 服务名，非常重要
+    name: px-gateway
+
+  config:
+    import: nacos:px-gateway.yml
+
   cloud:
     nacos:
-      discovery:
-        server-addr: 127.0.0.1:8848  # Nacos地址
+      server-addr: 127.0.0.1:8848
+      username: nacos
+      password: nacos123456
+      config:
         username: nacos
         password: nacos123456
+        group: DEFAULT_GROUP
+        file-extension: yml
     gateway:
       server:
         webflux:
@@ -17,11 +26,11 @@ spring:
               uri: lb://px-bff-service
               predicates:
                 - Path=/api/frontend/**
-            - id: px-app-service
-              uri: lb://px-app-service
-              predicates:
-                - Path=/user/**
-            - id: px-balance-service
-              uri: lb://px-balance-service
-              predicates:
-                - Path=/order/**
+
+auth:
+  jwt:
+    secret: 656AQn7q+sHwXzO2yiw2r8Ym7wqiKcoaDHw9HorasU0=
+    white-list:
+      - /api/frontend/login
+      - /api/frontend/register
+      - /api/frontend/captcha

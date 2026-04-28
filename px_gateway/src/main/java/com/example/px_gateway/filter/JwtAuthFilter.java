@@ -1,5 +1,6 @@
 package com.example.px_gateway.filter;
 
+import com.example.px_gateway.config.JwtProperties;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -14,18 +15,26 @@ import reactor.core.publisher.Mono;
 @Component
 public class JwtAuthFilter implements GlobalFilter, Ordered {
 
-    private static final String SECRET = "your-secret-key-123456";
+    private final JwtProperties jwtProperties;
+
+
+    public JwtAuthFilter(JwtProperties jwtProperties) {
+        this.jwtProperties = jwtProperties;
+    }
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
+        System.out.println("jwt secret = " + jwtProperties.getSecret());
+        System.out.println("white list = " + jwtProperties.getWhiteList());
         ServerHttpRequest request = exchange.getRequest();
 
         // 放行登录接口
         String path = request.getURI().getPath();
-        if (path.contains("/login")) {
+        if (jwtProperties.getWhiteList().contains(path)) {
             return chain.filter(exchange);
         }
+
 
         String token = request.getHeaders().getFirst("Authorization");
 
@@ -36,8 +45,9 @@ public class JwtAuthFilter implements GlobalFilter, Ordered {
         try {
             String realToken = token.replace("Bearer ", "");
 
+            String secrt = jwtProperties.getSecret();
             Claims claims = Jwts.parserBuilder()
-                    .setSigningKey(SECRET.getBytes())
+                    .setSigningKey(jwtProperties.getSecret().getBytes())
                     .build()
                     .parseClaimsJws(realToken)
                     .getBody();
