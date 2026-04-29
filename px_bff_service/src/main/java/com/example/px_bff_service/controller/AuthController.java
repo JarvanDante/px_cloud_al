@@ -2,6 +2,7 @@ package com.example.px_bff_service.controller;
 
 import com.example.px_app_api.dto.auth.LoginRequest;
 import com.example.px_app_api.dto.auth.LoginResponse;
+import com.example.px_app_api.dto.auth.RegisterRequest;
 import com.example.px_app_api.rpc.AuthService;
 import com.example.px_common.response.ApiResponse;
 import com.example.px_common.response.RpcResponse;
@@ -29,6 +30,15 @@ public class AuthController {
             return ApiResponse.error(rpc.getCode(), rpc.getMessage());
         }
 
+        return ApiResponse.success(rpc.getData());
+    }
+
+    @PostMapping("/register")
+    public ApiResponse register(@Valid @RequestBody RegisterRequest request) {
+        RpcResponse<LoginResponse> rpc = authService.register(request);
+        if (!rpc.isSuccess()) {
+            return ApiResponse.error(rpc.getCode(), rpc.getMessage());
+        }
         return ApiResponse.success(rpc.getData());
     }
 }

@@ -3,6 +3,7 @@ package com.example.px_app_service.service.rpc;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.px_app_api.dto.auth.LoginRequest;
 import com.example.px_app_api.dto.auth.LoginResponse;
+import com.example.px_app_api.dto.auth.RegisterRequest;
 import com.example.px_app_api.rpc.AuthService;
 import com.example.px_app_service.domain.User;
 import com.example.px_app_service.mapper.UserMapper;
@@ -14,6 +15,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.time.Instant;
 import java.util.HashMap;
 
 @DubboService
@@ -25,7 +27,12 @@ public class AuthServiceImpl implements AuthService {
     private final JwtUtil jwtUtil;
     private LoginResponse loginResponse;
 
-    //登录
+    /**
+     * 登录
+     *
+     * @param loginRequestDto
+     * @return
+     */
     @Override
     public RpcResponse login(@RequestBody LoginRequest loginRequestDto) {
         String username = loginRequestDto.getUsername();
@@ -57,5 +64,37 @@ public class AuthServiceImpl implements AuthService {
         map.put("token", token);
 
         return RpcResponse.success(map);
+    }
+
+    @Override
+    public RpcResponse register(@RequestBody RegisterRequest request) {
+        String username = request.getUsername();
+        String password = request.getPassword();
+
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("username", username);
+        User existUser = userMapper.selectOne(queryWrapper);
+        if (existUser != null) {
+            return RpcResponse.error(BizCode.USER_EXIST);
+        }
+
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(passwordEncoder.encode(password));
+        user.setStatus(1);
+        user.setRegisterTime(Instant.now());
+        user.setCreatedAt(Instant.now());
+        user.setUpdatedAt(Instant.now());
+
+        userMapper.insert(user);
+
+        String token = jwtUtil.generateToken(user, "app");
+        LoginResponse registerResponse = LoginResponse.builder()
+                .userId(user.getId())
+                .username(user.getUsername())
+                .token(token)
+                .build();
+
+        return RpcResponse.success(registerResponse);
     }
 }

@@ -19,6 +19,7 @@ spring:
 dubbo:
   application:
     name: px-app-service
+  #    serialize-check-status: WARN
   protocol:
     name: dubbo
     port: 20881

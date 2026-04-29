@@ -16,6 +16,7 @@ spring:
 dubbo:
   application:
     name: px-bff-service
+  #    serialize-check-status: WARN
   registry:
     address: nacos://127.0.0.1:8848
     #    address: nacos://127.0.0.1:8848
