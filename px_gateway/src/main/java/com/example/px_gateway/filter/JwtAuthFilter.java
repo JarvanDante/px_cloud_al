@@ -24,7 +24,6 @@ public class JwtAuthFilter implements GlobalFilter, Ordered {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        
         ServerHttpRequest request = exchange.getRequest();
 
         // 放行登录接口
@@ -43,7 +42,6 @@ public class JwtAuthFilter implements GlobalFilter, Ordered {
         try {
             String realToken = token.replace("Bearer ", "");
 
-            String secrt = jwtProperties.getSecret();
             Claims claims = Jwts.parserBuilder()
                     .setSigningKey(jwtProperties.getSecret().getBytes())
                     .build()
