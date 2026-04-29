@@ -3,8 +3,6 @@ package com.example.px_app_api.dto.user;
 import lombok.*;
 
 import java.io.Serializable;
-import java.time.Instant;
-
 @Getter
 @Setter
 @Builder
@@ -19,6 +17,6 @@ public class UserDTO implements Serializable {
     private String username;
     private String mobile;
     private String email;
-    private Instant lastLoginTime;
+    private String lastLoginTime;
     private String lastLoginIp;
 }
