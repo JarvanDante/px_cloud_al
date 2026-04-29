@@ -24,9 +24,7 @@ public class JwtAuthFilter implements GlobalFilter, Ordered {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-
-        System.out.println("jwt secret = " + jwtProperties.getSecret());
-        System.out.println("white list = " + jwtProperties.getWhiteList());
+        
         ServerHttpRequest request = exchange.getRequest();
 
         // 放行登录接口

@@ -9,7 +9,6 @@ public class ApiResponse<T> {
     private T data;
     private long timestamp;
 
-
     public ApiResponse(int code, String message, T data) {
         this.code = code;
         this.message = message;
@@ -18,7 +17,6 @@ public class ApiResponse<T> {
     }
 
     // ================= 成功 =================
-
     public static <T> ApiResponse<T> success() {
         return new ApiResponse<>(BizCode.SUCCESS.getCode(), BizCode.SUCCESS.getMessage(), null);
     }
@@ -28,13 +26,21 @@ public class ApiResponse<T> {
     }
 
     // ================= 失败 =================
-
     public static <T> ApiResponse<T> error(BizCode bizCode) {
         return new ApiResponse<>(bizCode.getCode(), bizCode.getMessage(), null);
     }
 
     public static <T> ApiResponse<T> error(int code, String message) {
         return new ApiResponse<>(code, message, null);
+    }
+
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 
     // ================= getter/setter =================
