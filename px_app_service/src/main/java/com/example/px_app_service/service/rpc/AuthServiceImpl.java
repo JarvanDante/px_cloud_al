@@ -16,7 +16,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.Instant;
-import java.util.HashMap;
 
 @DubboService
 @RequiredArgsConstructor
@@ -58,12 +57,13 @@ public class AuthServiceImpl implements AuthService {
         //生成token
         String token = jwtUtil.generateToken(user, "app");
 
-        HashMap<String, Object> map = new HashMap<>();
-        map.put("userId", user.getId());
-        map.put("username", user.getUsername());
-        map.put("token", token);
+        LoginResponse loginResponse = LoginResponse.builder()
+                .userId(user.getId())
+                .username(user.getUsername())
+                .token(token)
+                .build();
 
-        return RpcResponse.success(map);
+        return RpcResponse.success(loginResponse);
     }
 
     @Override
