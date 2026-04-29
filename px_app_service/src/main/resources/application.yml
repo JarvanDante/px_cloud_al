@@ -3,6 +3,13 @@ server:
 spring:
   application:
     name: px-app-service  # 服务名，非常重要
+  datasource:
+    # druid
+    #    type: com.alibaba.druid.pool.DruidDataSource
+    url: ${DB_URL:jdbc:mysql://localhost:3306/px_site?useSSL=false&serverTimezone=Asia/Shanghai}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:654321}
+    driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
     nacos:
       discovery:
@@ -21,3 +28,14 @@ dubbo:
     password: nacos123456
   provider:
     timeout: 3000
+
+auth:
+  jwt:
+    secret: 656AQn7q+sHwXzO2yiw2r8Ym7wqiKcoaDHw9HorasU0=
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.px_service.domain

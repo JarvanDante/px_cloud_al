@@ -31,6 +31,6 @@ auth:
   jwt:
     secret: 656AQn7q+sHwXzO2yiw2r8Ym7wqiKcoaDHw9HorasU0=
     white-list:
-      - /api/frontend/login
-      - /api/frontend/register
-      - /api/frontend/captcha
+      - /api/frontend/auth/login
+      - /api/frontend/auth/register
+      - /api/frontend/auth/captcha

@@ -1,7 +1,7 @@
 package com.example.px_app_service.service.rpc;
 
-import com.example.px_app_api.AppRpcService;
-import com.example.px_app_api.dto.UserDTO;
+import com.example.px_app_api.dto.user.UserDTO;
+import com.example.px_app_api.rpc.AppRpcService;
 import org.apache.dubbo.config.annotation.DubboService;
 
 @DubboService

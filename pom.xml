@@ -16,6 +16,7 @@
         <module>px_manage_service</module>
         <module>px_gateway</module>
         <module>px_bff_service</module>
+        <module>px_common</module>
     </modules>
 
     <properties>

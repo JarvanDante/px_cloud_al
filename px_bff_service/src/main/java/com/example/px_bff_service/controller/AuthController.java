@@ -1,0 +1,34 @@
+package com.example.px_bff_service.controller;
+
+import com.example.px_app_api.dto.auth.LoginRequest;
+import com.example.px_app_api.dto.auth.LoginResponse;
+import com.example.px_app_api.rpc.AuthService;
+import com.example.px_common.response.ApiResponse;
+import com.example.px_common.response.RpcResponse;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/frontend/auth")
+@RequiredArgsConstructor
+public class AuthController {
+
+    @DubboReference
+    private final AuthService authService;
+
+    @PostMapping("/login")
+    public ApiResponse login(@Valid @RequestBody LoginRequest request) {
+        RpcResponse<LoginResponse> rpc = authService.login(request);
+
+        if (!rpc.isSuccess()) {
+            return ApiResponse.error(rpc.getCode(), rpc.getMessage());
+        }
+
+        return ApiResponse.success(rpc.getData());
+    }
+}

@@ -1,4 +1,4 @@
-package com.example.px_app_api.dto;
+package com.example.px_app_api.dto.user;
 
 import java.io.Serializable;
 
