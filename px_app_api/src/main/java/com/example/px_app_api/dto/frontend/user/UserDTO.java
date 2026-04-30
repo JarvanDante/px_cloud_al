@@ -1,8 +1,9 @@
-package com.example.px_app_api.dto.user;
+package com.example.px_app_api.dto.frontend.user;
 
 import lombok.*;
 
 import java.io.Serializable;
+
 @Getter
 @Setter
 @Builder

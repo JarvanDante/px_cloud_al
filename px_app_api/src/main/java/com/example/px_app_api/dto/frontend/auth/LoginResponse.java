@@ -1,4 +1,4 @@
-package com.example.px_app_api.dto.auth;
+package com.example.px_app_api.dto.frontend.auth;
 
 import lombok.*;
 

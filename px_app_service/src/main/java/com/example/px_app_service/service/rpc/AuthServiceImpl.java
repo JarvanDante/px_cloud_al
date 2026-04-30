@@ -1,9 +1,9 @@
 package com.example.px_app_service.service.rpc;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.px_app_api.dto.auth.LoginRequest;
-import com.example.px_app_api.dto.auth.LoginResponse;
-import com.example.px_app_api.dto.auth.RegisterRequest;
+import com.example.px_app_api.dto.frontend.auth.LoginRequest;
+import com.example.px_app_api.dto.frontend.auth.LoginResponse;
+import com.example.px_app_api.dto.frontend.auth.RegisterRequest;
 import com.example.px_app_api.rpc.AuthService;
 import com.example.px_app_service.domain.User;
 import com.example.px_app_service.mapper.UserMapper;

@@ -1,6 +1,6 @@
 package com.example.px_app_service.service.rpc;
 
-import com.example.px_app_api.dto.user.UserDTO;
+import com.example.px_app_api.dto.frontend.user.UserDTO;
 import com.example.px_app_api.rpc.UserService;
 import com.example.px_app_service.domain.User;
 import com.example.px_app_service.mapper.UserMapper;

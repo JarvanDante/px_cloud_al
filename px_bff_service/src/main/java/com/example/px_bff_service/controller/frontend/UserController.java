@@ -1,6 +1,6 @@
-package com.example.px_bff_service.controller;
+package com.example.px_bff_service.controller.frontend;
 
-import com.example.px_app_api.dto.user.UserDTO;
+import com.example.px_app_api.dto.frontend.user.UserDTO;
 import com.example.px_app_api.rpc.UserService;
 import com.example.px_common.response.ApiResponse;
 import com.example.px_common.response.RpcResponse;

@@ -1,4 +1,4 @@
-package com.example.px_app_api.dto.auth;
+package com.example.px_app_api.dto.frontend.auth;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-public class LoginRequest implements Serializable {
+public class RegisterRequest implements Serializable {
     @NotBlank(message = "用户名不能为空")
     private String username;
 

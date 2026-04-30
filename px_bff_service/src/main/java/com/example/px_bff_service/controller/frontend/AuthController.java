@@ -1,8 +1,8 @@
-package com.example.px_bff_service.controller;
+package com.example.px_bff_service.controller.frontend;
 
-import com.example.px_app_api.dto.auth.LoginRequest;
-import com.example.px_app_api.dto.auth.LoginResponse;
-import com.example.px_app_api.dto.auth.RegisterRequest;
+import com.example.px_app_api.dto.frontend.auth.LoginRequest;
+import com.example.px_app_api.dto.frontend.auth.LoginResponse;
+import com.example.px_app_api.dto.frontend.auth.RegisterRequest;
 import com.example.px_app_api.rpc.AuthService;
 import com.example.px_common.response.ApiResponse;
 import com.example.px_common.response.RpcResponse;
