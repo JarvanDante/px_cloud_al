@@ -12,7 +12,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 
 @DubboService
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService {
+public class FrontendUserServiceImpl implements UserService {
     private final UserMapper userMapper;
 
     @Override

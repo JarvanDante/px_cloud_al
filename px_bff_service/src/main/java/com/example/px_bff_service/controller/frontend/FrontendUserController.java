@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/frontend/user")
-public class UserController {
+public class FrontendUserController {
 
     @DubboReference
     private final UserService userService;
