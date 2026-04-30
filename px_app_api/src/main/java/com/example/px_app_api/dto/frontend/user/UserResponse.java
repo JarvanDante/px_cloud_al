@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO implements Serializable {
+public class UserResponse implements Serializable {
     private Long id;
     private Integer siteId;
     private Integer gradeId;

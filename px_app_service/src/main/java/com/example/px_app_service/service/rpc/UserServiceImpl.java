@@ -1,6 +1,6 @@
 package com.example.px_app_service.service.rpc;
 
-import com.example.px_app_api.dto.frontend.user.UserDTO;
+import com.example.px_app_api.dto.frontend.user.UserResponse;
 import com.example.px_app_api.rpc.UserService;
 import com.example.px_app_service.domain.User;
 import com.example.px_app_service.mapper.UserMapper;
@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
 
     @Override
-    public RpcResponse<UserDTO> userInfo(Long userId) {
+    public RpcResponse<UserResponse> userInfo(Long userId) {
         if (userId == null) {
             return RpcResponse.error(BizCode.USER_NOT_EXIST);
         }
@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             return RpcResponse.error(BizCode.USER_NOT_EXIST);
         }
-        UserDTO userDTO = UserDTO.builder()
+        UserResponse userDTO = UserResponse.builder()
                 .id(user.getId())
                 .siteId(user.getSiteId())
                 .gradeId(user.getGradeId())

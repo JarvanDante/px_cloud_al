@@ -1,6 +1,6 @@
 package com.example.px_bff_service.controller.frontend;
 
-import com.example.px_app_api.dto.frontend.user.UserDTO;
+import com.example.px_app_api.dto.frontend.user.UserResponse;
 import com.example.px_app_api.rpc.UserService;
 import com.example.px_common.response.ApiResponse;
 import com.example.px_common.response.RpcResponse;
@@ -20,8 +20,8 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/user-info")
-    public ApiResponse<UserDTO> userInfo(@RequestHeader("X-User-Id") Long userId) {
-        RpcResponse<UserDTO> rpc = userService.userInfo(userId);
+    public ApiResponse<UserResponse> userInfo(@RequestHeader("X-User-Id") Long userId) {
+        RpcResponse<UserResponse> rpc = userService.userInfo(userId);
         if (!rpc.isSuccess()) {
             return ApiResponse.error(rpc.getCode(), rpc.getMessage());
         }
