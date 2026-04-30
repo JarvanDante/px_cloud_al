@@ -25,7 +25,7 @@ spring:
             - id: px-bff-service
               uri: lb://px-bff-service
               predicates:
-                - Path=/api/frontend/**
+                - Path=/api/frontend/**,/api/backend/**
 
 auth:
   jwt:
@@ -34,3 +34,4 @@ auth:
       - /api/frontend/auth/login
       - /api/frontend/auth/register
       - /api/frontend/auth/captcha
+      - /api/backend/auth/login

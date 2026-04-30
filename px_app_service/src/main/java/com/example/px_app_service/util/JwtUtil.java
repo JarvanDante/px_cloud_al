@@ -1,11 +1,11 @@
 package com.example.px_app_service.util;
 
 import com.example.px_app_service.config.JwtProperties;
+import com.example.px_app_service.domain.Admin;
 import com.example.px_app_service.domain.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import jakarta.annotation.Nullable;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -30,22 +30,40 @@ public class JwtUtil {
      * @param module
      * @return
      */
-    public String generateToken(User user, @Nullable String module) {
+    public String generateToken(User user, String module) {
+        return generateToken(
+                user.getId(),
+                user.getSiteId(),
+                user.getUsername(),
+                module
+        );
+    }
+
+    public String generateToken(Admin admin, String module) {
+        return generateToken(
+                admin.getId().longValue(),
+                admin.getSiteId(),
+                admin.getUsername(),
+                module
+        );
+    }
+
+    private String generateToken(Long id, Integer siteId, String username, String module) {
         if (module == null) {
-            module = "admin";
+            module = "app";
         }
 
         return Jwts.builder()
-                .setSubject(String.valueOf(user.getId()))
+                .setSubject(String.valueOf(id))
                 .claim(MODULE_CLAIM_KEY, module)
-                .claim(SITE_ID_KEY, user.getSiteId())
-                .claim(USERNAME_KEY, user.getUsername())
+                .claim(SITE_ID_KEY, siteId)
+                .claim(USERNAME_KEY, username)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRE))
                 .signWith(SignatureAlgorithm.HS256, key)
                 .compact();
-
     }
+
 
     /**
      * 解析 token

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/frontend/auth")
 @RequiredArgsConstructor
-public class AuthController {
+public class FrontendAuthController {
 
     @DubboReference
     private final AuthService authService;

@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 
 @DubboService
 @RequiredArgsConstructor
-public class AuthServiceImpl implements AuthService {
+public class FrontendAuthServiceImpl implements AuthService {
 
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
