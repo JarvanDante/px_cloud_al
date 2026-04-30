@@ -3,6 +3,7 @@ package com.example.px_app_api.dto.frontend.user;
 import lombok.*;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -18,6 +19,6 @@ public class UserResponse implements Serializable {
     private String username;
     private String mobile;
     private String email;
-    private String lastLoginTime;
+    private LocalDateTime lastLoginTime;
     private String lastLoginIp;
 }

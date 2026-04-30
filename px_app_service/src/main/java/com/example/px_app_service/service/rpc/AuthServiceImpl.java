@@ -15,7 +15,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @DubboService
 @RequiredArgsConstructor
@@ -82,9 +82,9 @@ public class AuthServiceImpl implements AuthService {
         user.setUsername(username);
         user.setPassword(passwordEncoder.encode(password));
         user.setStatus(1);
-        user.setRegisterTime(Instant.now());
-        user.setCreatedAt(Instant.now());
-        user.setUpdatedAt(Instant.now());
+        user.setRegisterTime(LocalDateTime.now());
+        user.setCreatedAt(LocalDateTime.now());
+        user.setUpdatedAt(LocalDateTime.now());
 
         userMapper.insert(user);
 

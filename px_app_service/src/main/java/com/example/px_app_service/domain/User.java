@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.LocalDate;
 
 @Getter
@@ -31,18 +31,18 @@ public class User {
     private String payPassword;
     private Integer status;
     private String registerIp;
-    private Instant registerTime;
+    private LocalDateTime registerTime;
     private String registerUrl;
     private String lastLoginIp;
-    private Instant lastLoginTime;
+    private LocalDateTime lastLoginTime;
     private String lastLoginAddress;
     private String mobile;
     private String email;
     private LocalDate birthday;
     private Integer isOnline;
     private String remark = "";
-    private Instant createdAt;
-    private Instant updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     private Integer payTimes = 0;
     private Integer hasPass;
 }
