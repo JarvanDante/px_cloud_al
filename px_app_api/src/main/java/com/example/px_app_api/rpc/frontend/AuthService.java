@@ -1,4 +1,4 @@
-package com.example.px_app_api.rpc;
+package com.example.px_app_api.rpc.frontend;
 
 import com.example.px_app_api.dto.frontend.auth.LoginRequest;
 import com.example.px_app_api.dto.frontend.auth.LoginResponse;

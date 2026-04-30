@@ -1,7 +1,7 @@
 package com.example.px_bff_service.controller.frontend;
 
 import com.example.px_app_api.dto.frontend.user.UserResponse;
-import com.example.px_app_api.rpc.UserService;
+import com.example.px_app_api.rpc.frontend.UserService;
 import com.example.px_common.response.ApiResponse;
 import com.example.px_common.response.RpcResponse;
 import lombok.RequiredArgsConstructor;

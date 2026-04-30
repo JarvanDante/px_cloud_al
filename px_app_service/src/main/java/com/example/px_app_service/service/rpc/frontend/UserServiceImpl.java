@@ -1,7 +1,7 @@
-package com.example.px_app_service.service.rpc;
+package com.example.px_app_service.service.rpc.frontend;
 
 import com.example.px_app_api.dto.frontend.user.UserResponse;
-import com.example.px_app_api.rpc.UserService;
+import com.example.px_app_api.rpc.frontend.UserService;
 import com.example.px_app_service.domain.User;
 import com.example.px_app_service.mapper.UserMapper;
 import com.example.px_common.enums.BizCode;

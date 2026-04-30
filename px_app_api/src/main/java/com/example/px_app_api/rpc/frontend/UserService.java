@@ -1,4 +1,4 @@
-package com.example.px_app_api.rpc;
+package com.example.px_app_api.rpc.frontend;
 
 import com.example.px_app_api.dto.frontend.user.UserResponse;
 import com.example.px_common.response.RpcResponse;
