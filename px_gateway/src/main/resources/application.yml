@@ -33,5 +33,5 @@ auth:
     white-list:
       - /api/frontend/auth/login
       - /api/frontend/auth/register
-      - /api/frontend/auth/captcha
+      - /api/frontend/app/captcha
       - /api/backend/auth/login

@@ -1,11 +1,15 @@
 package com.example.px_bff_service.exception;
 
+import com.example.px_common.enums.BizCode;
 import com.example.px_common.exception.BizException;
 import com.example.px_common.response.ApiResponse;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -34,6 +38,14 @@ public class GlobalExceptionHandler {
                 .orElse("参数错误");
 
         return ApiResponse.error(400, errorMsg);
+    }
+
+
+    // 缺少必填请求参数，例如 ?time=xxx 未传
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ApiResponse<?> handleMissingServletRequestParameter(MissingServletRequestParameterException e) {
+        return ApiResponse.error(BizCode.PARAM_MISSING.getCode(), BizCode.PARAM_MISSING.getMessage() + "：" + e.getParameterName());
     }
 
     // @RequestParam / @PathVariable 校验

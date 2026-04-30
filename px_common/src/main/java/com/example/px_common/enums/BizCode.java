@@ -4,6 +4,10 @@ public enum BizCode {
 
     SUCCESS(0, "success"),
 
+    // 0xxx: 通用参数错误
+    PARAM_MISSING(400, "缺少必要参数"),
+    PARAM_ERROR(401, "参数错误"),
+
     // 1xxx: 认证(auth)
     //账号或密码错误
     AUTH_INVALID_CREDENTIALS(1001, "账号或密码错误"),
@@ -22,6 +26,12 @@ public enum BizCode {
     ADMIN_INPUT_CODE(3003, "请输入动态验证码"),
     ADMIN_NOT_CONFIG_GOOGLE_2FA(3004, "二次验证未正确配置"),
     ADMIN_GOOGLE_CODE_ERROR(3005, "动态验证码错误"),
+
+    // 4xxx: 应用(app)
+    // 验证码相关
+    CAPTCHA_PARAM_ERROR(4001, "验证码参数错误"),
+    CAPTCHA_GENERATE_ERROR(4002, "验证码生成失败"),
+
     // 通用
     SYSTEM_ERROR(5000, "系统异常");
 
