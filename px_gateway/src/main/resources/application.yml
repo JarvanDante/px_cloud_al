@@ -10,12 +10,12 @@ spring:
 
   cloud:
     nacos:
-      server-addr: 127.0.0.1:8848
-      username: nacos
-      password: nacos123456
+      server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+      username: ${NACOS_USERNAME:nacos}
+      password: ${NACOS_PASSWORD:nacos123456}
       config:
-        username: nacos
-        password: nacos123456
+        username: ${NACOS_USERNAME:nacos}
+        password: ${NACOS_PASSWORD:nacos123456}
         group: DEFAULT_GROUP
         file-extension: yml
     gateway:
