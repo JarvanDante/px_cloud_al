@@ -1,0 +1,25 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos123456
+        group: PX_DEV_GROUP
+
+dubbo:
+  registry:
+    address: nacos://127.0.0.1:8848
+    username: nacos
+    password: nacos123456
+    group: PX_DEV_GROUP
+  config-center:
+    address: nacos://127.0.0.1:8848
+    username: nacos
+    password: nacos123456
+    group: PX_DEV_GROUP
+  metadata-report:
+    address: nacos://127.0.0.1:8848
+    username: nacos
+    password: nacos123456
+    group: PX_DEV_GROUP

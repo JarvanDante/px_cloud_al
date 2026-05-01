@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/px_site?useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 654321
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: 654321
+      database: 0
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos123456
+        group: PX_DEV_GROUP
+
+dubbo:
+  registry:
+    address: nacos://127.0.0.1:8848
+    username: nacos
+    password: nacos123456
+    group: PX_DEV_GROUP
+  config-center:
+    address: nacos://127.0.0.1:8848
+    username: nacos
+    password: nacos123456
+    group: PX_DEV_GROUP
+  metadata-report:
+    address: nacos://127.0.0.1:8848
+    username: nacos
+    password: nacos123456
+    group: PX_DEV_GROUP

@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    nacos:
+      server-addr: nacos:8848
+      username: nacos
+      password: nacos123456
+      discovery:
+        server-addr: nacos:8848
+        username: nacos
+        password: nacos123456
+        group: PX_TEST_GROUP
+      config:
+        enabled: false
+        server-addr: nacos:8848
+        username: nacos
+        password: nacos123456
+        group: DEFAULT_GROUP
+        file-extension: yml

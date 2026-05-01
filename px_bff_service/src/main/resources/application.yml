@@ -1,27 +1,24 @@
 server:
   port: 8091
+
 spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
   application:
     name: px-bff-service
   cloud:
     nacos:
-      discovery:
-        server-addr: ${NACOS_ADDR:127.0.0.1:8848}  # Nacos地址
-        username: ${NACOS_USERNAME:nacos}
-        password: ${NACOS_PASSWORD:nacos123456}
       config:
         import-check:
           enabled: false
         enabled: false
+
 dubbo:
   application:
     name: px-bff-service
-  #    serialize-check-status: WARN
-  registry:
-    address: nacos://${NACOS_ADDR:127.0.0.1:8848}
-    username: ${NACOS_USERNAME:nacos}
-    password: ${NACOS_PASSWORD:nacos123456}
+    qos-enable: false
   consumer:
+    check: false
     timeout: 3000
     retries: 0
 
