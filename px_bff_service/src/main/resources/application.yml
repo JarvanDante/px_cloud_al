@@ -6,9 +6,9 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848  # Nacos地址
-        username: nacos
-        password: nacos123456
+        server-addr: ${NACOS_ADDR:127.0.0.1:8848}  # Nacos地址
+        username: ${NACOS_USERNAME:nacos}
+        password: ${NACOS_PASSWORD:nacos123456}
       config:
         import-check:
           enabled: false
@@ -18,10 +18,9 @@ dubbo:
     name: px-bff-service
   #    serialize-check-status: WARN
   registry:
-    address: nacos://127.0.0.1:8848
-    #    address: nacos://127.0.0.1:8848
-    username: nacos
-    password: nacos123456
+    address: nacos://${NACOS_ADDR:127.0.0.1:8848}
+    username: ${NACOS_USERNAME:nacos}
+    password: ${NACOS_PASSWORD:nacos123456}
   consumer:
     timeout: 3000
     retries: 0
