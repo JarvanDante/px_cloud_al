@@ -6,6 +6,10 @@ spring:
         username: nacos
         password: nacos123456
         group: PX_DEV_GROUP
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8858
+        port: 8720
 
 dubbo:
   registry:

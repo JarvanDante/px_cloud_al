@@ -16,3 +16,7 @@ spring:
         password: nacos123456
         group: DEFAULT_GROUP
         file-extension: yml
+    sentinel:
+      transport:
+        dashboard: sentinel:8858
+        port: 8721
